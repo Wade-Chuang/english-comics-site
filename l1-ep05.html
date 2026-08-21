@@ -1,0 +1,222 @@
+<title>交朋友的第一句話</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Kalam:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F1; --surface:#FFFFFF; --surface-2:#E4E8E8;
+  --ink:#1C2226; --ink-soft:#4B565C;
+  --accent:#2E7D9A; --accent-soft:#DCEBF0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#14181C; --surface:#1C2226; --surface-2:#262D32;
+    --ink:#ECEDE9; --ink-soft:#AEB6BA;
+    --accent:#63BEDD; --accent-soft:#1F343D;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14181C; --surface:#1C2226; --surface-2:#262D32;
+  --ink:#ECEDE9; --ink-soft:#AEB6BA;
+  --accent:#63BEDD; --accent-soft:#1F343D;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:720px;margin:0 auto;padding:28px 24px 60px;}
+.crumb{font-family:"IBM Plex Mono",monospace;font-size:12px;margin:0 0 28px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.crumb a{color:var(--ink-soft);text-decoration:none;}
+.crumb a:hover{color:var(--accent);}
+.crumb-book{color:var(--accent);font-weight:600;}
+.ep-head{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+.ep-num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.04em;}
+.ep-title{font-family:"Unbounded",sans-serif;font-weight:800;font-size:26px;margin:0;}
+.ep-goal{font-size:13px;color:var(--ink-soft);margin:0 0 18px;}
+.ep-scene{font-size:14.5px;font-style:italic;color:var(--ink-soft);margin:0 0 22px;padding-left:14px;border-left:3px solid var(--accent-soft);line-height:1.7;}
+.panels{display:flex;flex-direction:column;gap:14px;}
+.panel{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:2px solid var(--accent);border-radius:8px;padding:16px;}
+.panel svg{width:68px;flex:none;}
+.bubble{position:relative;background:var(--surface);border:2px solid var(--ink);border-radius:14px;padding:12px 16px;flex:1;}
+.bubble .en{font-family:"Kalam",cursive;font-weight:700;font-size:16.5px;line-height:1.4;margin:0 0 6px;}
+.bubble .en .stress{text-decoration:underline;text-decoration-thickness:2.5px;text-underline-offset:3px;text-decoration-color:var(--accent);}
+.bubble .zh{font-size:13px;color:var(--ink-soft);margin:0 0 8px;}
+.speaker{font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px;opacity:.65;color:var(--accent);}
+.say{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;background:none;border:1.5px solid var(--accent);color:var(--accent);border-radius:99px;padding:3px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
+.say:hover{opacity:.75;}
+.say:active{transform:scale(.97);}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:18px;}
+.note{border:1.5px dashed var(--ink-soft);border-radius:8px;padding:10px 12px;}
+.note .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px;color:var(--accent);}
+.note p{font-size:13px;line-height:1.55;margin:0;color:var(--ink-soft);}
+.note p b{color:var(--ink);font-weight:600;}
+.drill{margin-top:16px;}
+.drill-label{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px;}
+.drill-list{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:8px;}
+.drill-list li{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--surface-2);border-radius:8px;padding:8px 12px;flex-wrap:wrap;}
+.drill-list .num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);flex:none;}
+.drill-list .say{flex:none;}
+.drill-list .txt{font-family:"Kalam",cursive;font-weight:700;font-size:15px;flex:1;}
+.drill-list .hint{font-size:12px;color:var(--ink-soft);font-family:"Noto Sans TC",sans-serif;flex:none;}
+.kk-group{margin-bottom:32px;}
+.kk-group h3{font-family:"Unbounded",sans-serif;font-size:14.5px;margin:0 0 14px;color:var(--accent);}
+.kk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;}
+.kk-card{background:var(--surface);border:1.5px solid var(--surface-2);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px;}
+.kk-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.kk-symbol{font-family:"Noto Sans","Segoe UI",Arial,sans-serif;font-size:22px;font-weight:700;color:var(--ink);}
+.kk-word{font-family:"Kalam",cursive;font-size:14px;font-weight:700;color:var(--ink-soft);}
+.kk-tip{font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin:0;}
+.kk-practice{margin-top:12px;padding:14px 16px;background:var(--accent-soft);border-radius:8px;}
+.kk-practice-label{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;font-weight:600;}
+.kk-pairs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.kk-pair{display:flex;align-items:center;gap:8px;background:var(--surface);border-radius:6px;padding:7px 10px;flex-wrap:wrap;}
+.kk-pw{display:flex;align-items:center;gap:5px;}
+.kk-pw .kk-symbol{font-size:15px;}
+.kk-pw .kk-word{font-size:12.5px;}
+.kk-pw .say{padding:2px 7px;font-size:9.5px;}
+.kk-vs{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--ink-soft);}
+.kk-quiz{border-top:1.5px dashed var(--ink-soft);padding-top:10px;}
+.kk-quiz-q{font-size:12.5px;margin:0 0 6px;line-height:1.6;}
+.kk-quiz-q b{color:var(--accent);}
+.kk-quiz-q span{color:var(--ink-soft);}
+.kk-quiz-ans{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);margin:8px 0 0;}
+.epnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:40px;padding-top:20px;border-top:2px solid var(--ink);}
+.epnav a{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;text-decoration:none;color:var(--ink);background:var(--surface);border:1.5px solid var(--surface-2);border-radius:8px;padding:10px 16px;}
+.epnav a:hover{border-color:var(--accent);color:var(--accent);}
+.epnav .epnav-home{background:var(--accent);color:#fff;border-color:var(--accent);}
+.epnav .epnav-spacer{flex:1;}
+@media (max-width:600px){
+  .panel{flex-direction:column;}
+  .notes{grid-template-columns:1fr;}
+  .drill-list .hint{width:100%;padding-left:30px;}
+}
+</style>
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<symbol id="zh-l1" viewBox="0 0 200 240">
+  <path d="M55 240 Q55 165 100 165 Q145 165 145 240 Z" fill="#7C8B99"/>
+  <rect x="88" y="150" width="24" height="30" fill="#E0A672"/>
+  <circle cx="100" cy="98" r="46" fill="#E0A672"/>
+  <path d="M56 92 Q52 40 100 42 Q148 40 144 92 Q140 60 100 58 Q60 60 56 92Z" fill="#221B17"/>
+  <ellipse cx="82" cy="102" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="102" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M74 88 Q82 82 90 88" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M110 88 Q118 82 126 88" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <ellipse cx="100" cy="124" rx="8" ry="6" fill="none" stroke="#1C2226" stroke-width="3"/>
+</symbol>
+<symbol id="em-l1" viewBox="0 0 200 240">
+  <path d="M55 240 Q55 165 100 165 Q145 165 145 240 Z" fill="#C9A24A"/>
+  <rect x="88" y="150" width="24" height="30" fill="#F2C9A0"/>
+  <path d="M150 110 Q160 150 148 180 Q142 150 138 115 Z" fill="#8A3F2B"/>
+  <circle cx="100" cy="98" r="46" fill="#F2C9A0"/>
+  <path d="M54 96 Q48 40 100 40 Q152 40 146 96 Q150 70 100 62 Q50 70 54 96Z" fill="#8A3F2B"/>
+  <ellipse cx="82" cy="102" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="102" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M74 90 Q82 85 90 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M110 90 Q118 85 126 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M88 122 Q100 130 112 122" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+</defs>
+</svg>
+<div class="wrap">
+  <p class="crumb"><a href="index.html">← 回到目錄</a> <span class="crumb-book">生活起步篇 LV.1</span></p>
+<section class="episode" id="ep5">
+  <div class="ep-head">
+    <span class="ep-num">EP.05</span>
+    <h2 class="ep-title">交朋友的第一句話</h2>
+  </div>
+  <p class="ep-goal">學習目標：Wh- 問句、自我介紹</p>
+  <p class="ep-scene">研討會的咖啡休息時間，小莊一個人站在角落，一位金髮女生端著咖啡走了過來。</p>
+
+  <div class="panels">
+    <div class="panel">
+      <svg viewBox="0 0 200 240"><use href="#em-l1"/></svg>
+      <div class="bubble">
+        <p class="speaker">Emma</p>
+        <p class="en">Hi, I don't think we've met. I'm Emma.</p>
+        <p class="zh">嗨，我們好像還沒見過。我是 Emma。</p>
+        <button class="say" data-say="Hi, I don't think we've met. I'm Emma." type="button">🔊 試聽</button>
+      </div>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 200 240"><use href="#zh-l1"/></svg>
+      <div class="bubble">
+        <p class="speaker">Zhuang</p>
+        <p class="en"><span class="stress">Nice</span> to meet you. I'm Zhuang.</p>
+        <p class="zh">很高興認識你。我是小莊。</p>
+        <button class="say" data-say="Nice to meet you. I'm Zhuang." type="button">🔊 試聽</button>
+      </div>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 200 240"><use href="#em-l1"/></svg>
+      <div class="bubble">
+        <p class="speaker">Emma</p>
+        <p class="en">Where are you from?</p>
+        <p class="zh">你從哪裡來？</p>
+        <button class="say" data-say="Where are you from?" type="button">🔊 試聽</button>
+      </div>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 200 240"><use href="#zh-l1"/></svg>
+      <div class="bubble">
+        <p class="speaker">Zhuang</p>
+        <p class="en">I'm from Taiwan. What about you?</p>
+        <p class="zh">我從台灣來。你呢？</p>
+        <button class="say" data-say="I'm from Taiwan. What about you?" type="button">🔊 試聽</button>
+      </div>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 200 240"><use href="#em-l1"/></svg>
+      <div class="bubble">
+        <p class="speaker">Emma</p>
+        <p class="en">I'm from the UK. What do you do?</p>
+        <p class="zh">我從英國來。你是做什麼工作的？</p>
+        <button class="say" data-say="I'm from the UK. What do you do?" type="button">🔊 試聽</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note"><p class="tag">Vocab</p><p><b>"What do you do?"</b> 問職業的標準說法，比直接問 "What's your job?" 更自然。</p></div>
+    <div class="note"><p class="tag">Grammar</p><p>Wh- 問句：<b>Where / What</b> 開頭，搭配 be 動詞或助動詞就能開啟話題。</p></div>
+    <div class="note"><p class="tag">發音 Pronunciation</p><p><b>Nice to meet you</b> 連音成 "nice-tuh-meet-chu"，t + y 常合併成 /tʃ/ 音。</p></div>
+  </div>
+
+  <div class="drill">
+    <p class="drill-label">跟讀練習 · 唸 3 次再往下讀</p>
+    <ul class="drill-list">
+      <li><span class="num">1</span><button class="say" data-say="Nice to meet you." type="button">🔊</button><span class="txt"><span class="stress">Nice</span> to meet you.</span><span class="hint">t+y 連音成 ch</span></li>
+      <li><span class="num">2</span><button class="say" data-say="Where are you from?" type="button">🔊</button><span class="txt">Where are you from?</span><span class="hint">are you 連音</span></li>
+      <li><span class="num">3</span><button class="say" data-say="What do you do?" type="button">🔊</button><span class="txt">What do you do?</span><span class="hint">do you 輕讀連音</span></li>
+    </ul>
+  </div>
+</section>
+  <nav class="epnav">
+    <a href="l1-ep04.html">← 上一集</a>
+    <a class="epnav-home" href="index.html">目錄</a>
+    <a href="l1-ep06.html">下一集 →</a>
+  </nav>
+</div>
+<script>
+(function(){
+  if(!('speechSynthesis' in window)) return;
+  var voice = null;
+  function pickVoice(){
+    var vs = speechSynthesis.getVoices();
+    voice = vs.find(function(v){return /en-US|en-GB/.test(v.lang);}) || vs[0] || null;
+  }
+  pickVoice();
+  speechSynthesis.onvoiceschanged = pickVoice;
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.say');
+    if(!btn) return;
+    var text = btn.getAttribute('data-say');
+    if(!text) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.9;
+    if(voice) u.voice = voice;
+    speechSynthesis.speak(u);
+  });
+})();
+</script>

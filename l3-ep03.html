@@ -1,0 +1,192 @@
+<title>談判與協商</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Kalam:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F1; --surface:#FFFFFF; --surface-2:#E4E8E8;
+  --ink:#1C2226; --ink-soft:#4B565C;
+  --accent:#2B3A67; --accent-soft:#DEE2ED;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#14181C; --surface:#1C2226; --surface-2:#262D32;
+    --ink:#ECEDE9; --ink-soft:#AEB6BA;
+    --accent:#8492C4; --accent-soft:#232A45;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14181C; --surface:#1C2226; --surface-2:#262D32;
+  --ink:#ECEDE9; --ink-soft:#AEB6BA;
+  --accent:#8492C4; --accent-soft:#232A45;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",sans-serif;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:720px;margin:0 auto;padding:28px 24px 60px;}
+.crumb{font-family:"IBM Plex Mono",monospace;font-size:12px;margin:0 0 28px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.crumb a{color:var(--ink-soft);text-decoration:none;}
+.crumb a:hover{color:var(--accent);}
+.crumb-book{color:var(--accent);font-weight:600;}
+.ep-head{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+.ep-num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.04em;}
+.ep-title{font-family:"Unbounded",sans-serif;font-weight:800;font-size:26px;margin:0;}
+.ep-goal{font-size:13px;color:var(--ink-soft);margin:0 0 18px;}
+.ep-scene{font-size:14.5px;font-style:italic;color:var(--ink-soft);margin:0 0 22px;padding-left:14px;border-left:3px solid var(--accent-soft);line-height:1.7;}
+.panels{display:flex;flex-direction:column;gap:14px;}
+.panel{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:2px solid var(--accent);border-radius:8px;padding:16px;}
+.panel svg{width:68px;flex:none;}
+.bubble{position:relative;background:var(--surface);border:2px solid var(--ink);border-radius:14px;padding:12px 16px;flex:1;}
+.bubble .en{font-family:"Kalam",cursive;font-weight:700;font-size:16.5px;line-height:1.4;margin:0 0 6px;}
+.bubble .en .stress{text-decoration:underline;text-decoration-thickness:2.5px;text-underline-offset:3px;text-decoration-color:var(--accent);}
+.bubble .zh{font-size:13px;color:var(--ink-soft);margin:0 0 8px;}
+.speaker{font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px;opacity:.65;color:var(--accent);}
+.say{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;background:none;border:1.5px solid var(--accent);color:var(--accent);border-radius:99px;padding:3px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
+.say:hover{opacity:.75;}
+.say:active{transform:scale(.97);}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:18px;}
+.note{border:1.5px dashed var(--ink-soft);border-radius:8px;padding:10px 12px;}
+.note .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px;color:var(--accent);}
+.note p{font-size:13px;line-height:1.55;margin:0;color:var(--ink-soft);}
+.note p b{color:var(--ink);font-weight:600;}
+.drill{margin-top:16px;}
+.drill-label{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px;}
+.drill-list{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:8px;}
+.drill-list li{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--surface-2);border-radius:8px;padding:8px 12px;flex-wrap:wrap;}
+.drill-list .num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);flex:none;}
+.drill-list .say{flex:none;}
+.drill-list .txt{font-family:"Kalam",cursive;font-weight:700;font-size:15px;flex:1;}
+.drill-list .hint{font-size:12px;color:var(--ink-soft);font-family:"Noto Sans TC",sans-serif;flex:none;}
+.kk-group{margin-bottom:32px;}
+.kk-group h3{font-family:"Unbounded",sans-serif;font-size:14.5px;margin:0 0 14px;color:var(--accent);}
+.kk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;}
+.kk-card{background:var(--surface);border:1.5px solid var(--surface-2);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px;}
+.kk-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.kk-symbol{font-family:"Noto Sans","Segoe UI",Arial,sans-serif;font-size:22px;font-weight:700;color:var(--ink);}
+.kk-word{font-family:"Kalam",cursive;font-size:14px;font-weight:700;color:var(--ink-soft);}
+.kk-tip{font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin:0;}
+.kk-practice{margin-top:12px;padding:14px 16px;background:var(--accent-soft);border-radius:8px;}
+.kk-practice-label{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;font-weight:600;}
+.kk-pairs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.kk-pair{display:flex;align-items:center;gap:8px;background:var(--surface);border-radius:6px;padding:7px 10px;flex-wrap:wrap;}
+.kk-pw{display:flex;align-items:center;gap:5px;}
+.kk-pw .kk-symbol{font-size:15px;}
+.kk-pw .kk-word{font-size:12.5px;}
+.kk-pw .say{padding:2px 7px;font-size:9.5px;}
+.kk-vs{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--ink-soft);}
+.kk-quiz{border-top:1.5px dashed var(--ink-soft);padding-top:10px;}
+.kk-quiz-q{font-size:12.5px;margin:0 0 6px;line-height:1.6;}
+.kk-quiz-q b{color:var(--accent);}
+.kk-quiz-q span{color:var(--ink-soft);}
+.kk-quiz-ans{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);margin:8px 0 0;}
+.epnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:40px;padding-top:20px;border-top:2px solid var(--ink);}
+.epnav a{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;text-decoration:none;color:var(--ink);background:var(--surface);border:1.5px solid var(--surface-2);border-radius:8px;padding:10px 16px;}
+.epnav a:hover{border-color:var(--accent);color:var(--accent);}
+.epnav .epnav-home{background:var(--accent);color:#fff;border-color:var(--accent);}
+.epnav .epnav-spacer{flex:1;}
+@media (max-width:600px){
+  .panel{flex-direction:column;}
+  .notes{grid-template-columns:1fr;}
+  .drill-list .hint{width:100%;padding-left:30px;}
+}
+</style>
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<symbol id="zh-l3" viewBox="0 0 200 240">
+  <path d="M50 240 Q50 160 100 160 Q150 160 150 240 Z" fill="#23324D"/>
+  <path d="M86 165 L100 195 L114 165" fill="#FFFFFF"/>
+  <path d="M96 175 L100 240 L104 175 Z" fill="#8C2E2E"/>
+  <rect x="88" y="148" width="24" height="30" fill="#E0A672"/>
+  <circle cx="100" cy="98" r="46" fill="#E0A672"/>
+  <path d="M56 92 Q52 40 100 42 Q148 40 144 92 Q140 60 100 58 Q60 60 56 92Z" fill="#221B17"/>
+  <ellipse cx="82" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M76 91 Q82 88 88 91" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M112 91 Q118 88 124 91" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M89 123 Q100 129 111 123" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+<symbol id="em-l3" viewBox="0 0 200 240">
+  <path d="M50 240 Q50 160 100 160 Q150 160 150 240 Z" fill="#33363E"/>
+  <path d="M85 164 L100 188 L115 164" fill="#FFFFFF"/>
+  <rect x="88" y="148" width="24" height="30" fill="#F2C9A0"/>
+  <path d="M150 108 Q160 148 148 178 Q142 148 138 113 Z" fill="#8A3F2B"/>
+  <circle cx="100" cy="98" r="46" fill="#F2C9A0"/>
+  <path d="M54 96 Q48 40 100 40 Q152 40 146 96 Q150 70 100 62 Q50 70 54 96Z" fill="#8A3F2B"/>
+  <ellipse cx="82" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M76 90 Q82 87 88 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M112 90 Q118 87 124 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M88 122 Q100 130 112 122" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+</defs>
+</svg>
+<div class="wrap">
+  <p class="crumb"><a href="index.html">← 回到目錄</a> <span class="crumb-book">專業職場篇 LV.3</span></p>
+<section class="episode" id="ep3">
+  <div class="ep-head"><span class="ep-num">EP.03</span><h2 class="ep-title">談判與協商</h2></div>
+  <p class="ep-goal">學習目標：假設語氣的外交辭令</p>
+  <p class="ep-scene">客戶對時程有意見，小莊沒有立刻讓步，而是拿出一個折衷方案。</p>
+  <div class="panels">
+    <div class="panel">
+      <svg viewBox="0 0 200 240"><use href="#zh-l3"/></svg>
+      <div class="bubble">
+        <p class="speaker">Zhuang</p>
+        <p class="en">If we could ex<span class="stress">tend</span> the timeline by two weeks, we'd be able to guaran<span class="stress">tee</span> the quality you're asking for.</p>
+        <p class="zh">如果我們能把時程延長兩週，就能保證您要求的品質。</p>
+        <button class="say" data-say="If we could extend the timeline by two weeks, we'd be able to guarantee the quality you're asking for." type="button">🔊 試聽</button>
+      </div>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 200 240"><use href="#em-l3"/></svg>
+      <div class="bubble">
+        <p class="speaker">Client</p>
+        <p class="en">That's a <span class="stress">rea</span>sonable ask. Let's revisit the <span class="stress">con</span>tract terms.</p>
+        <p class="zh">這個要求合理，我們來重新看一下合約條款。</p>
+        <button class="say" data-say="That's a reasonable ask. Let's revisit the contract terms." type="button">🔊 試聽</button>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note"><p class="tag">Vocab</p><p><b>"reasonable ask"</b> 職場高頻詞，比 "reasonable request" 更口語、更常出現在會議裡。</p></div>
+    <div class="note"><p class="tag">Grammar</p><p>條件句 <b>If we could..., we'd be able to...</b> 用假設語氣委婉提出商業條件，降低對抗感。</p></div>
+    <div class="note"><p class="tag">發音 Pronunciation</p><p>正式詞彙的重音常落在字尾（guaran<b>TEE</b>），跟中文語感相反；<b>could we</b> 連音成 /kʊdwi/。</p></div>
+  </div>
+  <div class="drill">
+    <p class="drill-label">跟讀練習 · 唸 3 次再往下讀</p>
+    <ul class="drill-list">
+      <li><span class="num">1</span><button class="say" data-say="If we could extend the timeline..." type="button">🔊</button><span class="txt">If we could ex<span class="stress">tend</span> the timeline...</span><span class="hint">extend 重音在後</span></li>
+      <li><span class="num">2</span><button class="say" data-say="We'd be able to guarantee the quality." type="button">🔊</button><span class="txt">We'd guaran<span class="stress">tee</span> the quality.</span><span class="hint">guarantee 重音在 -TEE</span></li>
+      <li><span class="num">3</span><button class="say" data-say="That's a reasonable ask." type="button">🔊</button><span class="txt">That's a <span class="stress">rea</span>sonable ask.</span><span class="hint">reasonable 重音在首音節</span></li>
+    </ul>
+  </div>
+</section>
+  <nav class="epnav">
+    <a href="l3-ep02.html">← 上一集</a>
+    <a class="epnav-home" href="index.html">目錄</a>
+    <a href="l3-ep04.html">下一集 →</a>
+  </nav>
+</div>
+<script>
+(function(){
+  if(!('speechSynthesis' in window)) return;
+  var voice = null;
+  function pickVoice(){
+    var vs = speechSynthesis.getVoices();
+    voice = vs.find(function(v){return /en-US|en-GB/.test(v.lang);}) || vs[0] || null;
+  }
+  pickVoice();
+  speechSynthesis.onvoiceschanged = pickVoice;
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.say');
+    if(!btn) return;
+    var text = btn.getAttribute('data-say');
+    if(!text) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.9;
+    if(voice) u.voice = voice;
+    speechSynthesis.speak(u);
+  });
+})();
+</script>
