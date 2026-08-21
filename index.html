@@ -1,0 +1,667 @@
+<title>英文闖關記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Kalam:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#EEF1F1;
+  --surface:#FFFFFF;
+  --surface-2:#E4E8E8;
+  --ink:#1C2226;
+  --ink-soft:#4B565C;
+  --l1:#2E7D9A;
+  --l1-soft:#DCEBF0;
+  --l2:#C97A2B;
+  --l2-soft:#F4E4D2;
+  --l3:#2B3A67;
+  --l3-soft:#DEE2ED;
+  --skin-kai:#E0A672;
+  --skin-emma:#F2C9A0;
+  --hair-kai:#221B17;
+  --hair-emma:#8A3F2B;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#14181C;
+    --surface:#1C2226;
+    --surface-2:#262D32;
+    --ink:#ECEDE9;
+    --ink-soft:#AEB6BA;
+    --l1:#63BEDD;
+    --l1-soft:#1F343D;
+    --l2:#ECAA5E;
+    --l2-soft:#3A2C1B;
+    --l3:#8492C4;
+    --l3-soft:#232A45;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14181C;
+  --surface:#1C2226;
+  --surface-2:#262D32;
+  --ink:#ECEDE9;
+  --ink-soft:#AEB6BA;
+  --l1:#63BEDD;
+  --l1-soft:#1F343D;
+  --l2:#ECAA5E;
+  --l2-soft:#3A2C1B;
+  --l3:#8492C4;
+  --l3-soft:#232A45;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Noto Sans TC","Unbounded",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:920px;margin:0 auto;padding:56px 24px 96px;}
+
+/* ---------- HERO ---------- */
+.hero{padding:8px 0 40px;border-bottom:3px solid var(--ink);margin-bottom:48px;}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-soft);margin:0 0 14px;
+}
+h1.title{
+  font-family:"Unbounded",sans-serif;
+  font-weight:800;
+  font-size:clamp(34px,6vw,56px);
+  line-height:1.05;
+  margin:0 0 14px;
+  text-wrap:balance;
+}
+.tagline{
+  font-size:17px;line-height:1.7;color:var(--ink-soft);
+  max-width:56ch;margin:0 0 32px;
+}
+.ladder{display:flex;align-items:flex-end;gap:18px;margin-top:8px;}
+.ladder-step{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.ladder-step svg{width:64px;height:auto;filter:drop-shadow(0 2px 0 rgba(0,0,0,.08));}
+.ladder-step .lv{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+  letter-spacing:.06em;padding:3px 9px;border-radius:99px;
+}
+.ladder-arrow{
+  font-size:22px;color:var(--ink-soft);margin-bottom:34px;
+}
+.lv1bg{background:var(--l1-soft);color:var(--l1);}
+.lv2bg{background:var(--l2-soft);color:var(--l2);}
+.lv3bg{background:var(--l3-soft);color:var(--l3);}
+
+/* ---------- CAST ---------- */
+.cast{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:64px;}
+.cast-card{
+  background:var(--surface);border:2px solid var(--ink);border-radius:10px;
+  padding:20px;display:flex;gap:16px;align-items:center;
+}
+.cast-card svg{width:76px;flex:none;}
+.cast-name{font-family:"Unbounded",sans-serif;font-weight:700;font-size:17px;margin:0 0 4px;}
+.cast-role{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);
+  text-transform:uppercase;letter-spacing:.06em;margin:0 0 8px;
+}
+.cast-bio{font-size:14px;line-height:1.6;color:var(--ink-soft);margin:0;}
+
+/* ---------- LEVEL SECTION ---------- */
+.level{margin-bottom:72px;}
+.level-head{display:flex;align-items:center;gap:14px;margin-bottom:6px;flex-wrap:wrap;}
+.badge{
+  font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;
+  letter-spacing:.06em;padding:5px 12px;border-radius:99px;white-space:nowrap;
+}
+.level-title{
+  font-family:"Unbounded",sans-serif;font-weight:800;font-size:26px;margin:0;
+}
+.level-sub{font-size:14.5px;color:var(--ink-soft);margin:10px 0 16px;max-width:60ch;line-height:1.6;}
+.book-link{
+  display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px;font-weight:600;text-decoration:none;padding:8px 16px;border-radius:99px;
+  margin-bottom:26px;
+}
+.L1 .book-link{background:var(--l1);color:#fff;}
+.L2 .book-link{background:var(--l2);color:#fff;}
+.L3 .book-link{background:var(--l3);color:#fff;}
+
+.episodes{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:10px;margin-bottom:30px;
+}
+.ep{
+  background:var(--surface);border:1.5px solid var(--surface-2);border-radius:8px;
+  padding:12px 14px;display:flex;gap:10px;align-items:baseline;
+}
+.ep b{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;flex:none;
+}
+.ep span{font-size:13.5px;color:var(--ink-soft);}
+
+/* ---------- COMIC STRIP ---------- */
+.strip{
+  background:var(--surface);border:3px solid var(--ink);border-radius:10px;
+  padding:22px;position:relative;overflow:hidden;
+}
+.strip::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(currentColor 1px,transparent 1px);
+  background-size:10px 10px;color:var(--surface-2);mix-blend-mode:multiply;
+}
+.strip-label{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);
+  letter-spacing:.06em;text-transform:uppercase;margin:0 0 16px;position:relative;
+}
+.panels{display:flex;flex-direction:column;gap:14px;position:relative;}
+.panel{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--surface);border:2px solid var(--ink);border-radius:8px;
+  padding:16px;
+}
+.panel svg{width:72px;flex:none;}
+.bubble{
+  position:relative;background:var(--surface);border:2px solid var(--ink);
+  border-radius:14px;padding:12px 16px;flex:1;
+}
+.bubble.right{order:-1;}
+.bubble .en{
+  font-family:"Kalam",cursive;font-weight:700;font-size:16.5px;line-height:1.4;
+  margin:0 0 6px;
+}
+.bubble .en .stress{
+  text-decoration:underline;text-decoration-thickness:2.5px;
+  text-underline-offset:3px;text-decoration-color:var(--stress-c,var(--ink));
+}
+.bubble .zh{font-size:13px;color:var(--ink-soft);margin:0 0 8px;}
+.say{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;
+  background:none;border:1.5px solid currentColor;color:inherit;border-radius:99px;
+  padding:3px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;
+}
+.say:hover{opacity:.75;}
+.say:active{transform:scale(.97);}
+.speaker{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px;opacity:.65;
+}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px;position:relative;}
+.note{
+  border:1.5px dashed var(--ink-soft);border-radius:8px;padding:10px 12px;
+}
+.note .tag{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px;
+}
+.note p{font-size:13px;line-height:1.55;margin:0;color:var(--ink-soft);}
+.note p b{color:var(--ink);font-weight:600;}
+
+/* level color wiring */
+.L1 .badge{background:var(--l1-soft);color:var(--l1);}
+.L1 .strip{border-color:var(--l1);}
+.L1 .panel{border-color:var(--l1);}
+.L1 .note{border-color:var(--l1);}
+.L1 .note .tag{color:var(--l1);}
+.L1 .speaker{color:var(--l1);}
+.L1 .bubble .en{--stress-c:var(--l1);}
+.L1 .say{color:var(--l1);}
+.L1 .drill b{color:var(--l1);}
+
+.L2 .badge{background:var(--l2-soft);color:var(--l2);}
+.L2 .strip{border-color:var(--l2);}
+.L2 .panel{border-color:var(--l2);}
+.L2 .note{border-color:var(--l2);}
+.L2 .note .tag{color:var(--l2);}
+.L2 .speaker{color:var(--l2);}
+.L2 .bubble .en{--stress-c:var(--l2);}
+.L2 .say{color:var(--l2);}
+.L2 .drill b{color:var(--l2);}
+
+.L3 .badge{background:var(--l3-soft);color:var(--l3);}
+.L3 .strip{border-color:var(--l3);}
+.L3 .panel{border-color:var(--l3);}
+.L3 .note{border-color:var(--l3);}
+.L3 .note .tag{color:var(--l3);}
+.L3 .speaker{color:var(--l3);}
+.L3 .bubble .en{--stress-c:var(--l3);}
+.L3 .say{color:var(--l3);}
+.L3 .drill b{color:var(--l3);}
+
+/* ---------- SHADOWING DRILL ---------- */
+.drill{margin-top:14px;position:relative;}
+.drill-label{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);
+  letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px;
+}
+.drill-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.drill-list li{
+  display:flex;align-items:center;gap:10px;background:var(--surface);
+  border:1.5px solid var(--surface-2);border-radius:8px;padding:8px 12px;
+}
+.drill-list .num{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);flex:none;
+}
+.drill-list .say{flex:none;}
+.drill-list .txt{font-family:"Kalam",cursive;font-weight:700;font-size:15px;flex:1;}
+.drill-list .hint{font-size:12px;color:var(--ink-soft);font-family:"Noto Sans TC",sans-serif;flex:none;}
+
+/* ---------- FOOTER SPEC ---------- */
+.spec{
+  border-top:3px solid var(--ink);padding-top:28px;margin-top:16px;
+  font-family:"IBM Plex Mono",monospace;
+}
+.spec h3{
+  font-family:"Unbounded",sans-serif;font-size:14px;letter-spacing:.02em;margin:0 0 16px;
+}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+.spec-item .k{font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px;}
+.spec-item .v{font-size:13px;font-weight:500;margin:0;}
+
+@media (max-width:600px){
+  .cast{grid-template-columns:1fr;}
+  .panel{flex-direction:column;}
+  .bubble.right{order:0;}
+  .notes{grid-template-columns:1fr;}
+  .drill-list li{flex-wrap:wrap;}
+  .drill-list .hint{width:100%;padding-left:30px;}
+}
+
+.print-only{display:none;}
+
+/* ---------- PRINT / PDF ---------- */
+@page{ size:A4; margin:16mm 14mm; }
+@media print{
+  body{background:#fff;}
+  .wrap{max-width:none;padding:0;}
+  .say{display:none;}
+  .screen-only{display:none;}
+  .print-only{display:block;}
+  .hero{page-break-after:avoid;}
+  .cast{page-break-after:always;}
+  .level{page-break-before:always;margin-bottom:0;padding-top:2mm;}
+  .strip,.panel,.cast-card,.note,.drill-list li,.episodes{break-inside:avoid;}
+  .spec{page-break-before:always;}
+  .strip::before{display:none;}
+}
+</style>
+
+<!-- reusable character symbols: same figure, only outfit/expression change per level -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+
+<symbol id="kai-l1" viewBox="0 0 200 240">
+  <path d="M55 240 Q55 165 100 165 Q145 165 145 240 Z" fill="#7C8B99"/>
+  <rect x="88" y="150" width="24" height="30" fill="#E0A672"/>
+  <circle cx="100" cy="98" r="46" fill="#E0A672"/>
+  <path d="M56 92 Q52 40 100 42 Q148 40 144 92 Q140 60 100 58 Q60 60 56 92Z" fill="#221B17"/>
+  <ellipse cx="82" cy="102" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="102" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M74 88 Q82 82 90 88" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M110 88 Q118 82 126 88" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <ellipse cx="100" cy="124" rx="8" ry="6" fill="none" stroke="#1C2226" stroke-width="3"/>
+</symbol>
+
+<symbol id="kai-l2" viewBox="0 0 200 240">
+  <path d="M55 240 Q55 165 100 165 Q145 165 145 240 Z" fill="#6FA8C9"/>
+  <path d="M90 168 L100 190 L110 168" fill="#FFFFFF"/>
+  <rect x="88" y="150" width="24" height="30" fill="#E0A672"/>
+  <circle cx="100" cy="98" r="46" fill="#E0A672"/>
+  <path d="M56 92 Q52 40 100 42 Q148 40 144 92 Q140 60 100 58 Q60 60 56 92Z" fill="#221B17"/>
+  <ellipse cx="82" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M75 90 Q82 86 89 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M111 90 Q118 86 125 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M88 122 Q100 132 112 122" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="kai-l3" viewBox="0 0 200 240">
+  <path d="M50 240 Q50 160 100 160 Q150 160 150 240 Z" fill="#23324D"/>
+  <path d="M86 165 L100 195 L114 165" fill="#FFFFFF"/>
+  <path d="M96 175 L100 240 L104 175 Z" fill="#8C2E2E"/>
+  <rect x="88" y="148" width="24" height="30" fill="#E0A672"/>
+  <circle cx="100" cy="98" r="46" fill="#E0A672"/>
+  <path d="M56 92 Q52 40 100 42 Q148 40 144 92 Q140 60 100 58 Q60 60 56 92Z" fill="#221B17"/>
+  <ellipse cx="82" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M76 91 Q82 88 88 91" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M112 91 Q118 88 124 91" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M89 123 Q100 129 111 123" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="emma-l1" viewBox="0 0 200 240">
+  <path d="M55 240 Q55 165 100 165 Q145 165 145 240 Z" fill="#C9A24A"/>
+  <rect x="88" y="150" width="24" height="30" fill="#F2C9A0"/>
+  <path d="M150 110 Q160 150 148 180 Q142 150 138 115 Z" fill="#8A3F2B"/>
+  <circle cx="100" cy="98" r="46" fill="#F2C9A0"/>
+  <path d="M54 96 Q48 40 100 40 Q152 40 146 96 Q150 70 100 62 Q50 70 54 96Z" fill="#8A3F2B"/>
+  <ellipse cx="82" cy="102" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="102" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M74 90 Q82 85 90 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M110 90 Q118 85 126 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M88 122 Q100 130 112 122" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="emma-l2" viewBox="0 0 200 240">
+  <path d="M55 240 Q55 165 100 165 Q145 165 145 240 Z" fill="#3E8F84"/>
+  <rect x="88" y="150" width="24" height="30" fill="#F2C9A0"/>
+  <path d="M150 110 Q160 150 148 180 Q142 150 138 115 Z" fill="#8A3F2B"/>
+  <circle cx="100" cy="98" r="46" fill="#F2C9A0"/>
+  <path d="M54 96 Q48 40 100 40 Q152 40 146 96 Q150 70 100 62 Q50 70 54 96Z" fill="#8A3F2B"/>
+  <ellipse cx="82" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M75 89 Q82 84 89 89" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M111 89 Q118 84 125 89" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M87 121 Q100 133 113 121" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="emma-l3" viewBox="0 0 200 240">
+  <path d="M50 240 Q50 160 100 160 Q150 160 150 240 Z" fill="#33363E"/>
+  <path d="M85 164 L100 188 L115 164" fill="#FFFFFF"/>
+  <rect x="88" y="148" width="24" height="30" fill="#F2C9A0"/>
+  <path d="M150 108 Q160 148 148 178 Q142 148 138 113 Z" fill="#8A3F2B"/>
+  <circle cx="100" cy="98" r="46" fill="#F2C9A0"/>
+  <path d="M54 96 Q48 40 100 40 Q152 40 146 96 Q150 70 100 62 Q50 70 54 96Z" fill="#8A3F2B"/>
+  <ellipse cx="82" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <ellipse cx="118" cy="100" rx="5" ry="6" fill="#1C2226"/>
+  <path d="M76 90 Q82 87 88 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M112 90 Q118 87 124 90" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M88 122 Q100 130 112 122" stroke="#1C2226" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+
+</defs>
+</svg>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">小莊的英文升級記 · 成人英文漫畫電子書系列</p>
+    <h1 class="title">英文闖關記</h1>
+    <p class="tagline">
+      同一個主角「小莊」，從機場那句結結巴巴的 <em>"To the airport, please"</em>，
+      一路練到會議室裡談判合約條款。三本一套，程度銜接、角色不換，
+      讀者跟著角色一起升級，而不是每本重新認識新教材。每句對話都標重音、
+      附連音說明，還有跟讀練習，不是只能默讀的漫畫。
+    </p>
+    <div class="ladder">
+      <div class="ladder-step">
+        <svg viewBox="0 0 200 240"><use href="#kai-l1"/></svg>
+        <span class="lv lv1bg">LV.1 生活起步</span>
+      </div>
+      <span class="ladder-arrow">→</span>
+      <div class="ladder-step">
+        <svg viewBox="0 0 200 240"><use href="#kai-l2"/></svg>
+        <span class="lv lv2bg">LV.2 進階溝通</span>
+      </div>
+      <span class="ladder-arrow">→</span>
+      <div class="ladder-step">
+        <svg viewBox="0 0 200 240"><use href="#kai-l3"/></svg>
+        <span class="lv lv3bg">LV.3 專業職場</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cast">
+    <div class="cast-card">
+      <svg viewBox="0 0 200 240"><use href="#kai-l2"/></svg>
+      <div>
+        <p class="cast-name">小莊 Zhuang</p>
+        <p class="cast-role">主角 · 讀者視角</p>
+        <p class="cast-bio">32 歲、外商轉職中的上班族。從對機場英文緊張到手抖，到能在會議室提案談判 —— 讀者的程度跟著他一起長大。</p>
+      </div>
+    </div>
+    <div class="cast-card">
+      <svg viewBox="0 0 200 240"><use href="#emma-l2"/></svg>
+      <div>
+        <p class="cast-name">Emma</p>
+        <p class="cast-role">好友 / 外籍同事</p>
+        <p class="cast-bio">貫穿三本的英語母語者夥伴，負責示範自然說法、糾正小莊的用詞，把每個場景的關鍵句型帶出來。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LEVEL 1 ===================== -->
+  <section class="level L1">
+    <div class="level-head">
+      <span class="badge">LV.1 · CEFR A1–A2</span>
+    </div>
+    <h2 class="level-title">生活起步篇</h2>
+    <p class="level-sub">給完全初學或多年沒開口的大人。6 個「求生英文」場景，目標是敢開口、聽得懂關鍵字，不追求文法完美。</p>
+    <a class="book-link" href="book1.html">📖 閱讀完整 Book 1（含 KK 音標暖身）→</a>
+
+    <div class="episodes">
+      <div class="ep"><b>01</b><span>機場入境 — 打招呼與基本問句</span></div>
+      <div class="ep"><b>02</b><span>第一次搭計程車 — 地點與數字</span></div>
+      <div class="ep"><b>03</b><span>點餐初體驗 — 禮貌請求句型</span></div>
+      <div class="ep"><b>04</b><span>迷路了怎麼辦 — 方位介系詞</span></div>
+      <div class="ep"><b>05</b><span>交朋友的第一句話 — Wh- 問句</span></div>
+      <div class="ep"><b>06</b><span>緊急狀況求助 — 簡單求助句</span></div>
+    </div>
+
+    <div class="strip">
+      <p class="strip-label">Episode 02 樣張 · 第一次搭計程車</p>
+      <div class="panels">
+        <div class="panel">
+          <svg viewBox="0 0 200 240"><use href="#emma-l1"/></svg>
+          <div class="bubble">
+            <p class="speaker">Driver</p>
+            <p class="en"><span class="stress">Where</span> to? ↗</p>
+            <p class="zh">你要去哪裡？（尾音上揚）</p>
+            <button class="say" data-say="Where to?" type="button">🔊 試聽</button>
+          </div>
+        </div>
+        <div class="panel">
+          <svg viewBox="0 0 200 240"><use href="#kai-l1"/></svg>
+          <div class="bubble">
+            <p class="speaker">Zhuang</p>
+            <p class="en">Um... to the <span class="stress">air</span>port, please?</p>
+            <p class="zh">呃⋯我要去⋯機場，麻煩你。</p>
+            <button class="say" data-say="To the airport, please." type="button">🔊 試聽</button>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <p class="tag">Vocab</p>
+          <p><b>"Where to?"</b> 計程車司機最常問的省略句，等於 "Where do you want to go?"</p>
+        </div>
+        <div class="note">
+          <p class="tag">Grammar</p>
+          <p>句尾加 <b>please</b> 就能把任何地點變成有禮貌的請求：<b>[地點], please.</b></p>
+        </div>
+        <div class="note">
+          <p class="tag">發音 Pronunciation</p>
+          <p><b>to the</b> 都不重讀、唸得又輕又快（/tə ðə/），只有 <b>airport</b> 要清楚重讀 — 全句只有一個重音，聽起來才自然。</p>
+        </div>
+      </div>
+      <div class="drill">
+        <p class="drill-label">跟讀練習 · 唸 3 次再往下讀</p>
+        <ul class="drill-list">
+          <li><span class="num">1</span><button class="say" data-say="Where to?" type="button">🔊</button><span class="txt">Where to? ↗</span><span class="hint">尾音上揚</span></li>
+          <li><span class="num">2</span><button class="say" data-say="To the airport, please." type="button">🔊</button><span class="txt">To the <span class="stress">air</span>port, please.</span><span class="hint">air 重音</span></li>
+          <li><span class="num">3</span><button class="say" data-say="Thank you so much!" type="button">🔊</button><span class="txt"><span class="stress">Thank</span> you so much!</span><span class="hint">th 咬舌音 /θ/</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LEVEL 2 ===================== -->
+  <section class="level L2">
+    <div class="level-head">
+      <span class="badge">LV.2 · CEFR B1–B2</span>
+    </div>
+    <h2 class="level-title">進階溝通篇</h2>
+    <p class="level-sub">小莊已經敢開口，這本練的是「有立場地開口」：表達意見、委婉拒絕、處理客訴，句子變長也變圓融。</p>
+    <a class="book-link" href="book2.html">📖 閱讀完整 Book 2 →</a>
+
+    <div class="episodes">
+      <div class="ep"><b>01</b><span>跟外國同事約午餐 — 提議與排程</span></div>
+      <div class="ep"><b>02</b><span>表達不同意見 — 同意 / 不同意句型</span></div>
+      <div class="ep"><b>03</b><span>客訴與退貨 — 有禮貌的堅持</span></div>
+      <div class="ep"><b>04</b><span>旅遊突發狀況 — 過去式敘事</span></div>
+      <div class="ep"><b>05</b><span>閒聊時事與興趣 — 委婉措辭</span></div>
+      <div class="ep"><b>06</b><span>安慰與鼓勵朋友 — 同理心表達</span></div>
+    </div>
+
+    <div class="strip">
+      <p class="strip-label">Episode 02 樣張 · 表達不同意見</p>
+      <div class="panels">
+        <div class="panel">
+          <svg viewBox="0 0 200 240"><use href="#emma-l2"/></svg>
+          <div class="bubble">
+            <p class="speaker">Emma</p>
+            <p class="en">I think we should <span class="stress">push</span> the <span class="stress">dead</span>line. What do you think?</p>
+            <p class="zh">我覺得我們應該延後截止日。你覺得呢？</p>
+            <button class="say" data-say="I think we should push the deadline. What do you think?" type="button">🔊 試聽</button>
+          </div>
+        </div>
+        <div class="panel">
+          <svg viewBox="0 0 200 240"><use href="#kai-l2"/></svg>
+          <div class="bubble">
+            <p class="speaker">Zhuang</p>
+            <p class="en">I see your <span class="stress">point</span>, but I'm not sure the client will agree.</p>
+            <p class="zh">我懂你的意思，但我不確定客戶會同意。</p>
+            <button class="say" data-say="I see your point, but I'm not sure the client will agree." type="button">🔊 試聽</button>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <p class="tag">Vocab</p>
+          <p><b>"I see your point, but..."</b> 先肯定對方再帶出不同意見，比直接反駁圓融很多。</p>
+        </div>
+        <div class="note">
+          <p class="tag">Grammar</p>
+          <p><b>I'm not sure (that) + S + V</b>：表達保留態度，比直接說 "No" 更留餘地。</p>
+        </div>
+        <div class="note">
+          <p class="tag">發音 Pronunciation</p>
+          <p><b>not sure</b> 連音成 /nə.ʃər/，聽起來像 "no-sher"；<b>I think</b> 的 th 是無聲咬舌音 /θ/，舌尖要輕咬在牙齒間，跟中文「ㄙ」不同。</p>
+        </div>
+      </div>
+      <div class="drill">
+        <p class="drill-label">跟讀練習 · 唸 3 次再往下讀</p>
+        <ul class="drill-list">
+          <li><span class="num">1</span><button class="say" data-say="I see your point, but..." type="button">🔊</button><span class="txt">I see your <span class="stress">point</span>, but...</span><span class="hint">point 重音，語調下降</span></li>
+          <li><span class="num">2</span><button class="say" data-say="I'm not sure the client will agree." type="button">🔊</button><span class="txt">I'm <span class="stress">not sure</span> the client will agree.</span><span class="hint">not sure 連音成 no-sher</span></li>
+          <li><span class="num">3</span><button class="say" data-say="Let's revisit this later." type="button">🔊</button><span class="txt">Let's re<span class="stress">vi</span>sit this later.</span><span class="hint">revisit 重音在 -VI-</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LEVEL 3 ===================== -->
+  <section class="level L3">
+    <div class="level-head">
+      <span class="badge">LV.3 · CEFR B2–C1</span>
+    </div>
+    <h2 class="level-title">專業職場篇</h2>
+    <p class="level-sub">小莊升職了。這本是真正的「戰場英文」：開會、提案、談判、email、跨文化衝突，語域轉向正式與精準措辭。</p>
+    <a class="book-link" href="book3.html">📖 閱讀完整 Book 3 →</a>
+
+    <div class="episodes">
+      <div class="ep"><b>01</b><span>會議開場與破冰 — 專業寒暄</span></div>
+      <div class="ep"><b>02</b><span>提案簡報 — 說服性句型</span></div>
+      <div class="ep"><b>03</b><span>談判與協商 — 假設語氣的外交辭令</span></div>
+      <div class="ep"><b>04</b><span>商務 Email 往來 — 正式語域</span></div>
+      <div class="ep"><b>05</b><span>跨文化衝突處理 — 委婉緩衝句</span></div>
+      <div class="ep"><b>06</b><span>績效面談與升遷 — 專業自我倡議</span></div>
+    </div>
+
+    <div class="strip">
+      <p class="strip-label">Episode 03 樣張 · 談判與協商</p>
+      <div class="panels">
+        <div class="panel">
+          <svg viewBox="0 0 200 240"><use href="#kai-l3"/></svg>
+          <div class="bubble">
+            <p class="speaker">Zhuang</p>
+            <p class="en">If we could ex<span class="stress">tend</span> the timeline by two weeks, we'd be able to guaran<span class="stress">tee</span> the quality you're asking for.</p>
+            <p class="zh">如果我們能把時程延長兩週，就能保證您要求的品質。</p>
+            <button class="say" data-say="If we could extend the timeline by two weeks, we'd be able to guarantee the quality you're asking for." type="button">🔊 試聽</button>
+          </div>
+        </div>
+        <div class="panel">
+          <svg viewBox="0 0 200 240"><use href="#emma-l3"/></svg>
+          <div class="bubble">
+            <p class="speaker">Client</p>
+            <p class="en">That's a <span class="stress">rea</span>sonable ask. Let's revisit the <span class="stress">con</span>tract terms.</p>
+            <p class="zh">這個要求合理，我們來重新看一下合約條款。</p>
+            <button class="say" data-say="That's a reasonable ask. Let's revisit the contract terms." type="button">🔊 試聽</button>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <p class="tag">Vocab</p>
+          <p><b>"reasonable ask"</b> 職場高頻詞，比 "reasonable request" 更口語、更常出現在會議裡。</p>
+        </div>
+        <div class="note">
+          <p class="tag">Grammar</p>
+          <p>條件句 <b>If we could..., we'd be able to...</b> 用假設語氣委婉提出商業條件，降低對抗感。</p>
+        </div>
+        <div class="note">
+          <p class="tag">發音 Pronunciation</p>
+          <p>正式詞彙的重音常落在字尾（guaran<b>TEE</b>、negoti<b>ATE</b>），跟中文語感相反，唸錯重音位置母語者容易聽不懂；<b>could we</b> 連音成 /kʊdwi/。</p>
+        </div>
+      </div>
+      <div class="drill">
+        <p class="drill-label">跟讀練習 · 唸 3 次再往下讀</p>
+        <ul class="drill-list">
+          <li><span class="num">1</span><button class="say" data-say="If we could extend the timeline..." type="button">🔊</button><span class="txt">If we could ex<span class="stress">tend</span> the timeline...</span><span class="hint">extend 重音在後</span></li>
+          <li><span class="num">2</span><button class="say" data-say="We'd be able to guarantee the quality." type="button">🔊</button><span class="txt">We'd guaran<span class="stress">tee</span> the quality.</span><span class="hint">guarantee 重音在 -TEE</span></li>
+          <li><span class="num">3</span><button class="say" data-say="That's a reasonable ask." type="button">🔊</button><span class="txt">That's a <span class="stress">rea</span>sonable ask.</span><span class="hint">reasonable 重音在首音節</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec">
+    <h3>製作規格</h3>
+    <div class="spec-grid">
+      <div class="spec-item"><p class="k">每本頁數</p><p class="v">24–28 頁 A4</p></div>
+      <div class="spec-item"><p class="k">每本集數</p><p class="v">6 個場景單元</p></div>
+      <div class="spec-item"><p class="k">角色系統</p><p class="v">小莊 + Emma 貫穿三本</p></div>
+      <div class="spec-item"><p class="k">圖像方式</p><p class="v">扁平向量插畫，非寫實漫畫</p></div>
+      <div class="spec-item"><p class="k">內容結構</p><p class="v">情境對話 + 中譯 + 單字 + 文法卡</p></div>
+      <div class="spec-item"><p class="k">發音教學</p><p class="v">重音標記 + 連音說明 + 每集跟讀練習</p></div>
+      <div class="spec-item"><p class="k">音檔形式</p><p class="v">PDF 內嵌 QR Code → 真人 / TTS 錄音頁</p></div>
+      <div class="spec-item"><p class="k">套裝定價建議</p><p class="v">單本 NT$390 / 三本套 NT$990</p></div>
+    </div>
+    <p class="screen-only" style="font-size:12px;color:var(--ink-soft);margin-top:16px;line-height:1.6;">
+      PDF 是平面格式沒辦法內嵌播放器，實際產品用<b style="color:var(--ink)">QR Code</b>連到託管的音檔頁（每句真人或 TTS 錄音），
+      讀者掃碼跟讀；上方 🔊 按鈕是本頁面用瀏覽器語音合成做的即時試聽，方便你先聽聽句子的節奏感。
+    </p>
+    <p class="print-only" style="font-size:12px;color:var(--ink-soft);margin-top:16px;line-height:1.6;">
+      本 PDF 為平面格式，每句對話的發音請掃描該集第一頁的 QR Code（正式成品版會印在頁面角落），
+      連到託管的音檔頁聆聽真人 / TTS 錄音再跟讀。
+    </p>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  if(!('speechSynthesis' in window)) return;
+  var voice = null;
+  function pickVoice(){
+    var vs = speechSynthesis.getVoices();
+    voice = vs.find(function(v){return /en-US|en-GB/.test(v.lang);}) || vs[0] || null;
+  }
+  pickVoice();
+  speechSynthesis.onvoiceschanged = pickVoice;
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.say');
+    if(!btn) return;
+    var text = btn.getAttribute('data-say');
+    if(!text) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.9;
+    if(voice) u.voice = voice;
+    speechSynthesis.speak(u);
+  });
+})();
+</script>
